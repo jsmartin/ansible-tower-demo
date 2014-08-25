@@ -1,0 +1,7 @@
+---
+- name: Deploy Tower
+  hosts: tower
+  sudo: true
+  
+  roles:
+  - tower-bootstrap

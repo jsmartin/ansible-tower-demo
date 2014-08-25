@@ -1,0 +1,14 @@
+- name: install tower-cli
+  pip: name=ansible-tower-cli state=present
+
+- name: copy tower cli config
+  copy: src=tower_cli.cfg dest=/etc/awx/
+
+- name: copy vagrant ssh key
+  copy: src={{ lookup('env','HOME') }}/vagrant.d/insecure_private_key dest=/root/vagrant-key
+
+# - name: get tower_populator
+#  get_url: url=https://raw.githubusercontent.com/jsmartin/tower_populator/master/tower_populator dest=/usr/local/bin/tower_populator mode=0755
+
+ 
+

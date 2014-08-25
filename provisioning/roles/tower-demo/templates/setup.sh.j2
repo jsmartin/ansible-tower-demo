@@ -1,0 +1,8 @@
+# generated script
+
+
+#generate users
+
+{% for user in tower_users %}
+tower-cli user create --username {{ user.username }} --password password --email {{ user.email }} --first-name {{ user.first_name }} --last-name {{ user.last_name }}
+{% endfor %}

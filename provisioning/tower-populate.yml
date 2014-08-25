@@ -1,0 +1,7 @@
+---
+- name: Populate Tower
+  hosts: tower
+  sudo: true
+  
+  roles:
+  - tower-demo
