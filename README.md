@@ -33,7 +33,7 @@ You'll need Ansible installed and working.  You'll also need tower-cli:
 
 This demo uses the [tower_populator project ](https://github.com/jsmartin/tower_populator)to populate tower with various items.  Please have a look at that project, and create a template that suits your needs.  The project is included as a submodule for your convenience. 
 
-This is to be considered a stop-gap until a Tower module for Ansible is available.  At that time, it's like that new configuration template's will need to be created.
+This is to be considered a stop-gap until a Tower module for Ansible is available.  At that time, it's likely that new configuration template's will need to be created.
 
 #### Instantiation ####
 
