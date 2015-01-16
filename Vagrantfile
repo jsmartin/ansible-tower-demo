@@ -16,6 +16,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |nodes|
   (6..END_IP).each_with_index do |last_octet, index|
     index = index + 1
     nodes.vm.define "node-#{index}" do |machine|
+      machine.ssh.insert_key = false
       machine.vm.hostname = "node-#{index}"
       machine.vm.network "private_network", ip: "10.42.0.#{last_octet}"
     end
@@ -27,6 +28,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |nodes|
       vb.customize ["modifyvm", :id, "--cpus", "1"]
     end
     machine.vm.hostname = "tower"
+    machine.ssh.insert_key = false
     machine.vm.network :private_network, ip: "10.42.0.200"
     machine.vm.provision "ansible" do |ansible|
       ansible.playbook = "provisioning/tower-prep.yml"
@@ -37,7 +39,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |nodes|
       ansible.inventory_path = "/tmp/ansible-tower-setup-vagrant/myhosts"
       ansible.verbose = "v"
       ansible.limit = 'all'
-      ansible.extra_vars = { ansible_ssh_user: 'vagrant' }
+      ansible.extra_vars = "provisioning/tower_setup_conf.yml"
       ansible.sudo = true
     end
   end

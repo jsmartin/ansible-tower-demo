@@ -1,0 +1,7 @@
+admin_password: password
+database: internal
+munin_password: password
+pg_password: cmLM3eaXpnCS74TeXJv3SsxoHQiZccCno3atmBij
+primary_machine: localhost
+redis_password: 8nJ2TTpSZnpr79eWbqPwXPbrhCUK65r72VjBysKx
+ansible_ssh_user: vagrant
