@@ -1,15 +1,12 @@
 ---
-- name: install EPEL 
-  yum: name=http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 
-- name: install some useful packages 
-  yum: name={{ item }} state=latest
-  with_items:
-  - unzip
-  - python-pip
-  - python-psphere
-  - python-devel
-  - gcc
+- include_vars: "{{ ansible_os_family }}.yml"
+
+- include: RedHat.yml
+  when: ansible_os_family == "RedHat"
+
+- include: Debian.yml
+  when: ansible_os_family == "Debian"
 
 - name: install ansible 
   pip: name=ansible state=present version={{ ansible_ver }}

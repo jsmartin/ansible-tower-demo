@@ -1,0 +1,3 @@
+- name: install some useful packages 
+  apt: name={{ item }} state=latest
+  with_items: packages

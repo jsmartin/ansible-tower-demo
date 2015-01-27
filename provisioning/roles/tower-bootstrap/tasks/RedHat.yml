@@ -1,0 +1,6 @@
+- name: install EPEL 
+  yum: name=http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+
+- name: install some useful packages 
+  yum: name={{ item }} state=latest
+  with_items: packages

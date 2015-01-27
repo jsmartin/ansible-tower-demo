@@ -10,7 +10,8 @@ END_IP = NODES - 1 + START_IP
 
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |nodes|
-  nodes.vm.box = "chef/centos-6.5"
+   #nodes.vm.box ="ubuntu/trusty64"
+   nodes.vm.box = "chef/centos-6.5"
 
 
   (6..END_IP).each_with_index do |last_octet, index|
@@ -27,6 +28,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |nodes|
       vb.customize ["modifyvm", :id, "--memory", "2048"]
       vb.customize ["modifyvm", :id, "--cpus", "1"]
     end
+    machine.vm.synced_folder "../ansible-tower-db-migrator/", "/ansible-tower-db-migrator"
+    machine.vm.synced_folder "../../customers/inova/customer-demo/", "/var/lib/awx/projects/customer-demo"
     machine.vm.hostname = "tower"
     machine.ssh.insert_key = false
     machine.vm.network :private_network, ip: "10.42.0.200"
