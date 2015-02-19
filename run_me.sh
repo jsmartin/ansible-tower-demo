@@ -1,6 +1,6 @@
 #! /bin/bash -e
 
-tower_version=$(grep tower_version provisioning/host_vars/tower|cut -f2 -d':'| tr -d ' ')
+tower_version=$(python -c "import yaml; data=yaml.load(open('provisioning/host_vars/tower').read()); print data['tower_version']")
 tower_config=$1
 setup_dir=/tmp/ansible-tower-setup-vagrant
 
@@ -18,6 +18,6 @@ cat << EOF > ${setup_dir}/myhosts
 10.42.0.200
 EOF
 
-vagrant up
+vagrant up tower
 
-tower_populator/tower_populator ${tower_config}
+#tower_populator/tower_populator ${tower_config}

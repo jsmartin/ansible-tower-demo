@@ -29,8 +29,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |nodes|
       vb.customize ["modifyvm", :id, "--cpus", "1"]
     end
     #machine.vm.box = "tower-2.1.0-licensed"
-    machine.vm.synced_folder "../ansible-tower-db-migrator/", "/ansible-tower-db-migrator"
-    machine.vm.synced_folder "../../customers/inova/customer-demo/", "/var/lib/awx/projects/customer-demo"
     machine.vm.hostname = "tower"
     machine.ssh.insert_key = false
     machine.vm.network :private_network, ip: "10.42.0.200"
