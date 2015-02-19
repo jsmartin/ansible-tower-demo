@@ -1,6 +1,6 @@
 ---
-tower_version: 2.1.0
-ansible_ver: 1.8.2
+tower_version: 2.1.1
+ansible_ver: 1.8.3
 playbookdir: /var/lib/awx/projects
 keydir: /home/vagrant/.ssh
 hostfile: /etc/ansible/hosts
